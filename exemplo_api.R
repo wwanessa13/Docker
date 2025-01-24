@@ -19,6 +19,5 @@ predict_species <- function(sepal_length, sepal_width, petal_length, petal_width
   pred <- predict(model, input)
   return(list(prediction = as.character(pred)))
 }
-
 pr <- plumber::plumb("/exemplo_api.R")
 pr$run(host = "0.0.0.0", port = 8000)
