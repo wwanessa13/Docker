@@ -9,7 +9,7 @@ model <- readRDS("modelo_rf.rds")
 #' @param petal_width
 #' @json
 
-predict_species <- function(sepal_length, sepal_width, petal_length, petal_width) {
+predict_species <- function(sepal_length, sepal_width, petal_length, petal_width){
   input <- data.frame(
     Sepal.Length = as.numeric(sepal_length),
     Sepal.Width = as.numeric(sepal_width),
@@ -17,7 +17,7 @@ predict_species <- function(sepal_length, sepal_width, petal_length, petal_width
     Petal.Width = as.numeric(petal_width)
   )
   pred <- predict(model, input)
-  return(list(prediction = as.character(pred)))
-}
+  return(list(prediction = as.character(pred)))}
+
 pr <- plumber::plumb("/exemplo_api.R")
 pr$run(host = "0.0.0.0", port = 8000)
